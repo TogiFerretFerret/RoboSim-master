@@ -1,7 +1,7 @@
 package robosim;
 
 public class Barrier extends MapObject{
-    String AChar = "B";
+    String AChar = "=";
     @Override
     public String getChar() {
         return AChar;
