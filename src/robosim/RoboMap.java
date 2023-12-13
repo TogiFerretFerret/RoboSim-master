@@ -30,6 +30,10 @@ public class RoboMap {
         // Loop through until the xPos is correct, and update the position of the robot on the map each time
         while (newPos[0] != this.roboPos[0]) {
             if (newPos[0] > this.roboPos[0]) {
+                if (this.RMap.FMap[this.roboPos[0]+1][this.roboPos[1]] instanceof Barrier) {
+                    System.out.println("Cannot move robot into barrier!");
+                    break;
+                }
                 this.RMap.FMap[this.roboPos[0]][this.roboPos[1]] = new Air();
                 this.roboPos[0] += 1;
                 this.RMap.FMap[this.roboPos[0]][this.roboPos[1]] = new Robot();
@@ -60,4 +64,11 @@ public class RoboMap {
             }
         }
     }
+    public void createBarrier(int x, int y) {
+    try {
+        this.RMap.FMap[y][x] = new Barrier();
+    } catch (ArrayIndexOutOfBoundsException e) {
+        System.out.println("Invalid coordinates for barrier: " + x + ", " + y);
+    }
+}
 }
