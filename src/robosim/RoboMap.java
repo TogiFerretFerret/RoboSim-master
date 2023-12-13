@@ -40,6 +40,10 @@ public class RoboMap {
                 Toolbox.printMap(this);
                 Toolbox.sleep(200);
             } else if (newPos[0] < this.roboPos[0]) {
+                if (this.RMap.FMap[this.roboPos[0]-1][this.roboPos[1]] instanceof Barrier) {
+                    System.out.println("Cannot move robot into barrier!");
+                    break;
+                }
                 this.RMap.FMap[this.roboPos[0]][this.roboPos[1]] = new Air();
                 this.roboPos[0] -= 1;
                 this.RMap.FMap[this.roboPos[0]][this.roboPos[1]] = new Robot();
@@ -50,12 +54,20 @@ public class RoboMap {
         // Loop through until the yPos is correct, and update the position of the robot on the map each time
         while (newPos[1] != this.roboPos[1]) {
             if (newPos[1] > this.roboPos[1]) {
+                if (this.RMap.FMap[this.roboPos[0]][this.roboPos[1]+1] instanceof Barrier) {
+                    System.out.println("Cannot move robot into barrier!");
+                    break;
+                }
                 this.RMap.FMap[this.roboPos[0]][this.roboPos[1]] = new Air();
                 this.roboPos[1] += 1;
                 this.RMap.FMap[this.roboPos[0]][this.roboPos[1]] = new Robot();
                 Toolbox.printMap(this);
                 Toolbox.sleep(200);
             } else if (newPos[1] < this.roboPos[1]) {
+                if (this.RMap.FMap[this.roboPos[0]][this.roboPos[1]-1] instanceof Barrier) {
+                    System.out.println("Cannot move robot into barrier!");
+                    break;
+                }
                 this.RMap.FMap[this.roboPos[0]][this.roboPos[1]] = new Air();
                 this.roboPos[1] -= 1;
                 this.RMap.FMap[this.roboPos[0]][this.roboPos[1]] = new Robot();
