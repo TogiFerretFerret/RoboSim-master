@@ -7,9 +7,19 @@ public class RoboMap {
     public FTCMap RMap;
     public int[] roboPos;
     public RoboMap(int[] dimensions, int[] roboStartPos) {
-        this.RMap = new FTCMap(new MapObject[dimensions[0]][dimensions[1]]);
-        this.RMap.FMap[roboStartPos[0]][roboStartPos[1]] = new Robot();
-        this.roboPos = roboStartPos;
+        try {
+            MapObject[][] pmap = new MapObject[dimensions[0]][dimensions[1]];
+            for (int i = 0; i< pmap.length; ++i) {
+                for (int j = 0; j<pmap[i].length; ++j) {
+                    pmap[i][j] = new Air();
+                }
+            }
+            this.RMap = new FTCMap(pmap);
+            this.RMap.FMap[roboStartPos[0]][roboStartPos[1]] = new Robot();
+            this.roboPos = roboStartPos;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
     public void moveRobot(DirectionVector direction) {
         int[] newPos = new int[] {this.roboPos[0] + direction.getX(), this.roboPos[1] + direction.getY()};

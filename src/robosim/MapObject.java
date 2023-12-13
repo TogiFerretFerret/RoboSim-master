@@ -1,8 +1,8 @@
 package robosim;
 
-public interface MapObject {
-    String getChar() {
-
+public class MapObject {
+    public String AChar = "w";
+    public String getChar() {
+        return AChar;
     }
 }
-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

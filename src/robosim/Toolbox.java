@@ -33,7 +33,10 @@ public class Toolbox {
         FTCMap mmap = map.RMap;
         String mapString = "";
         for (MapObject[] row : mmap.FMap) {
+            System.out.println(row);
             for (MapObject cell : row) {
+                System.out.println(cell);
+                System.out.println(cell.getChar());
                 mapString += cell.getChar();
                 mapString += " ";
             }
