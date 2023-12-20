@@ -7,8 +7,10 @@ import robosim.RoboMapUtils.BarrierCreation;
 public class RoboMap {
     public FTCMap RMap;
     public int[] roboPos;
+    public int[] dimensions;
     public RoboMap(int[] dimensions, int[] roboStartPos) {
         try {
+            this.dimensions = dimensions;
             MapObject[][] pmap = initializeMap(dimensions);
             this.RMap = new FTCMap(pmap);
             this.RMap.FMap[roboStartPos[0]][roboStartPos[1]] = new Robot();
@@ -32,6 +34,6 @@ public class RoboMap {
     }
     public void createBarrier(int x, int y) {
         BarrierCreation bc = new BarrierCreation();
-        bc.createBarrier(this, x, y);
+        bc.createBarrier(this, x, this.dimensions[1] - y);
     }
 }
