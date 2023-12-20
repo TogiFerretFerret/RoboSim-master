@@ -1,6 +1,7 @@
 import robosim.RoboMap;
 import robosim.Toolbox;
 import robosim.DirectionVector;
+
 public class Main {
     public static void main(String[] args) {
         RoboMap map = new RoboMap(new int[] {11, 11}, new int[] {5, 5});
