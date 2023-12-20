@@ -4,6 +4,10 @@ import robosim.DirectionVector;
 import robosim.Toolbox;
 import robosim.RoboMapUtils.RobotMovement;
 import robosim.RoboMapUtils.BarrierCreation;
+import robosim.MapObjects;
+
+import java.util.Map;
+
 public class RoboMap {
     public FTCMap RMap;
     public int[] roboPos;
@@ -13,7 +17,7 @@ public class RoboMap {
             this.dimensions = dimensions;
             MapObject[][] pmap = initializeMap(dimensions);
             this.RMap = new FTCMap(pmap);
-            this.RMap.FMap[roboStartPos[0]][roboStartPos[1]] = new Robot();
+            this.RMap.FMap[roboStartPos[0]][roboStartPos[1]] = MapObjects.ROBOT.createInstance();
             this.roboPos = roboStartPos;
         } catch (Exception e) {
             System.out.println(e);
@@ -28,7 +32,7 @@ public class RoboMap {
     private void mapFixer(int[] dimensions, MapObject[][] map) {
         for (int i = 0; i < dimensions[0]; i++) {
             for (int j = 0; j < dimensions[1]; j++) {
-                map[i][j] = new Air();
+                map[i][j] = MapObjects.AIR.createInstance();
             }
         }
     }

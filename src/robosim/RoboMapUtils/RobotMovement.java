@@ -7,6 +7,7 @@ import robosim.MapObject;
 import robosim.Robot;
 import robosim.Barrier;
 import robosim.Air;
+import robosim.MapObjects;
 public class RobotMovement {
     public void moveRobot(RoboMap roboMap, DirectionVector direction) {
         int[] newPos = new int[] {roboMap.roboPos[0] + direction.getX(), roboMap.roboPos[1] + direction.getY()};
@@ -34,9 +35,9 @@ public class RobotMovement {
                     System.out.println("Cannot move robot into barrier!");
                     break;
                 }
-                roboMap.RMap.FMap[roboMap.roboPos[0]][roboMap.roboPos[1]] = new Air();
+                roboMap.RMap.FMap[roboMap.roboPos[0]][roboMap.roboPos[1]] = MapObjects.AIR.createInstance();
                 roboMap.roboPos[1] -= 1;
-                roboMap.RMap.FMap[roboMap.roboPos[0]][roboMap.roboPos[1]] = new Robot();
+                roboMap.RMap.FMap[roboMap.roboPos[0]][roboMap.roboPos[1]] = MapObjects.ROBOT.createInstance();
                 Toolbox.printMap(roboMap);
                 Toolbox.sleep(200);
             }
@@ -50,9 +51,9 @@ public class RobotMovement {
                     System.out.println("Cannot move robot into barrier!");
                     break;
                 }
-                roboMap.RMap.FMap[roboMap.roboPos[0]][roboMap.roboPos[1]] = new Air();
+                roboMap.RMap.FMap[roboMap.roboPos[0]][roboMap.roboPos[1]] = MapObjects.AIR.createInstance();
                 roboMap.roboPos[0] += 1;
-                roboMap.RMap.FMap[roboMap.roboPos[0]][roboMap.roboPos[1]] = new Robot();
+                roboMap.RMap.FMap[roboMap.roboPos[0]][roboMap.roboPos[1]] = MapObjects.ROBOT.createInstance();
                 Toolbox.printMap(roboMap);
                 Toolbox.sleep(200);
             } else if (newPos[0] < roboMap.roboPos[0]) {
@@ -60,9 +61,9 @@ public class RobotMovement {
                     System.out.println("Cannot move robot into barrier!");
                     break;
                 }
-                roboMap.RMap.FMap[roboMap.roboPos[0]][roboMap.roboPos[1]] = new Air();
+                roboMap.RMap.FMap[roboMap.roboPos[0]][roboMap.roboPos[1]] = MapObjects.AIR.createInstance();
                 roboMap.roboPos[0] -= 1;
-                roboMap.RMap.FMap[roboMap.roboPos[0]][roboMap.roboPos[1]] = new Robot();
+                roboMap.RMap.FMap[roboMap.roboPos[0]][roboMap.roboPos[1]] = MapObjects.ROBOT.createInstance();
                 Toolbox.printMap(roboMap);
                 Toolbox.sleep(200);
             }
