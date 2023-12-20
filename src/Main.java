@@ -16,7 +16,8 @@ public class Main {
         Toolbox.sleep(1000);
         map.createBarrier(6, 5);
         map.createBarrier(7, 5);
-        map.createBarrier(6, 4);
+        map.createBarrier(7, 4);
+        map.createBarrier(6, 5);
         Toolbox.printMap(map);
         Toolbox.sleep(1000);
     }

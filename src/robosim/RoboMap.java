@@ -21,13 +21,18 @@ public class RoboMap {
     }
     public MapObject[][] initializeMap(int[] dimensions) {
         MapObject[][] map = new MapObject[dimensions[0]][dimensions[1]];
+        mapFixer(dimensions, map);
+        return map;
+    }
+
+    private void mapFixer(int[] dimensions, MapObject[][] map) {
         for (int i = 0; i < dimensions[0]; i++) {
             for (int j = 0; j < dimensions[1]; j++) {
                 map[i][j] = new Air();
             }
         }
-        return map;
     }
+
     public void moveRobot(DirectionVector dvector) {
         RobotMovement rm = new RobotMovement();
         rm.moveRobot(this, dvector);
